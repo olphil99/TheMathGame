@@ -1,5 +1,6 @@
 package com.github.olphil99.themathgame;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,8 +16,9 @@ public class StartScreen extends AppCompatActivity {
 
         final Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                Log.d("TAG", "hello");
+                startActivity(new Intent(StartScreen.this, TheGame.class));
             }
         });
     }
