@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,34 +9,58 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#324968"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/scoreTxt"
-            android:layout_width="match_parent"
+            android:layout_width="138dp"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAlignment="viewEnd"
-            android:textAppearance="@style/TextAppearance.AppCompat" />
+            android:fontFamily="monospace"
+            android:text="Score: "
+            android:textAlignment="textStart"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
+
             android:id="@+id/questionTxt"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:text="TextView" />
+            android:layout_width="299dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="Question"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/questionDisplay"
+            android:background="drawable/border"
+            android:drawableBottom="#000000"
+            android:layout_width="269dp"
+            android:layout_height="74dp" />
 
         <TextView
             android:id="@+id/timeTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_width="155dp"
+            android:layout_height="34dp"
+            android:fontFamily="monospace"
+            android:text="Time: "
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/answerTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="256dp"
+            android:layout_height="78dp"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textAlignment="center" />
 
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</android.widget.RelativeLayout>
