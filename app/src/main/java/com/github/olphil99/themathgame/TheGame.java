@@ -55,8 +55,5 @@ public class TheGame extends AppCompatActivity {
             }
         }.start();
 
-        do {
-            
-        } while ();
     }
 }
