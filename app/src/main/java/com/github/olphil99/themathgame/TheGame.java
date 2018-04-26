@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,22 +18,6 @@ import android.widget.TextView;
 public class TheGame extends AppCompatActivity {
 
     TextView timerTxt;
-    long startTime = 0;
-
-    Handler timerHandler = new Handler();
-    Runnable timerRun = new Runnable() {
-        @Override
-        public void run() {
-            long ms = System.currentTimeMillis() - startTime;
-            int sec = (int) (ms / 1000);
-            sec = sec % 60;
-
-            timerTxt.setText(sec + " s");
-
-            timerHandler.postDelayed(this, 500);
-        }
-    };
-    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +27,7 @@ public class TheGame extends AppCompatActivity {
         // add timerTxt to theGame.xml
         timerTxt = (TextView) findViewById(R.id.timerTxt);
 
+        // Rectangle boarder around question
         Paint paint = new Paint();
         paint.setColor(Color.parseColor("#195cc6"));
         Bitmap bg = Bitmap.createBitmap(400, 800, Bitmap.Config.ARGB_8888);
@@ -52,15 +38,18 @@ public class TheGame extends AppCompatActivity {
         RelativeLayout rel = (RelativeLayout) findViewById(R.id.thePage);
         rel.setBackgroundDrawable(new BitmapDrawable(bg));
 
+        // Start timer
+        CountDownTimer timer = new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long msFin) {
+                timerTxt.setText(msFin / 1000 + " s");
+            }
 
-        // might have to make the start button start the timer?
-        Button btn = (Button) findViewById(R.id.startBtn);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Button b = (Button) v;
-//                // ...
-//            }
-//        });
+            @Override
+            public void onFinish() {
+                timerTxt.setText("!");
+                // replace with *open score*
+            }
+        }.start();
     }
 }
