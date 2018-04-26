@@ -37,12 +37,12 @@ public class TheGame extends AppCompatActivity {
 
         // might have to make the start button start the timer?
         Button btn = (Button) findViewById(R.id.startBtn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Button b = (Button) v;
-                // ...
-            }
-        });
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Button b = (Button) v;
+//                // ...
+//            }
+//        });
     }
 }

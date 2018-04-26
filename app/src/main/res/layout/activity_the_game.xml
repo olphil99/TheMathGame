@@ -6,60 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".TheGame">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
+    <TextView
+        android:id="@+id/timerTxt"
+        android:layout_width="52dp"
+        android:layout_height="34dp"
+        android:layout_alignEnd="@+id/scoreTxt"
+        android:layout_alignTop="@+id/timeTxt"
+        android:fontFamily="monospace"
+        android:textColor="#195cc6"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/urScoreTxt"
+        android:layout_width="47dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:background="#195cc6"
-        android:orientation="vertical">
+        android:fontFamily="monospace"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#195cc6"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/scoreTxt"
-            android:layout_width="138dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:text="Score: "
-            android:textAlignment="textStart"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/scoreTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="47dp"
+        android:fontFamily="monospace"
+        android:text="Score: "
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#195cc6"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-        <TextView
+    <TextView
 
-            android:id="@+id/questionTxt"
-            android:layout_width="299dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:text="Question"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        android:id="@+id/questionTxt"
+        android:layout_width="299dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/questionDisplay"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="monospace"
+        android:text="Question"
+        android:textAlignment="center"
+        android:textColor="#195cc6"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/questionDisplay"
-            android:drawableBottom="#000000"
-            android:layout_width="269dp"
-            android:layout_height="74dp" />
+    <TextView
+        android:id="@+id/questionDisplay"
+        android:layout_width="269dp"
+        android:layout_height="74dp"
+        android:layout_above="@+id/answerTxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-198dp"
+        android:drawableBottom="#000000" />
 
-        <TextView
-            android:id="@+id/timeTxt"
-            android:layout_width="155dp"
-            android:layout_height="34dp"
-            android:fontFamily="monospace"
-            android:text="Time: "
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/timeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/answerTxt"
+        android:layout_marginEnd="101dp"
+        android:fontFamily="monospace"
+        android:text="Time: "
+        android:textColor="#195cc6"
+        android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/answerTxt"
-            android:layout_width="256dp"
-            android:layout_height="78dp"
-            android:ems="10"
-            android:inputType="number"
-            android:textAlignment="center" />
+    <EditText
+        android:id="@+id/answerTxt"
+        android:layout_width="256dp"
+        android:layout_height="78dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="198dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textAlignment="center" />
 
-    </LinearLayout>
 </android.widget.RelativeLayout>
