@@ -24,8 +24,11 @@ public class TheGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_the_game);
 
-        // add timerTxt to theGame.xml
+        // initialize timerTxt
         timerTxt = (TextView) findViewById(R.id.timerTxt);
+
+        // Declare score variables
+        int incorrect = 0, correct = 0;
 
         // Rectangle boarder around question
         Paint paint = new Paint();
@@ -51,5 +54,6 @@ public class TheGame extends AppCompatActivity {
                 // replace with *open score*
             }
         }.start();
+
     }
 }
