@@ -57,9 +57,25 @@
     <view
         class="android.support.constraint.ConstraintLayout"
         id="@+id/view"
-        android:layout_width="wrap_content"
+        android:layout_width="464dp"
         android:layout_height="494dp"
-        tools:layout_editor_absoluteY="41dp" />
+        android:text="hey "
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+    <TextView
+        android:id="@+id/blank "
+        android:layout_width="83dp"
+        android:layout_height="51dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/The"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_above="@id/The"
+        android:text="Hello"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 
 </android.support.constraint.ConstraintLayout>
