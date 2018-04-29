@@ -22,6 +22,6 @@ public class Multiplication {
     }
 
     public String toString() {
-        return multiplicand + " x " + multiplier + " = ";
+        return multiplicand + " x " + multiplier;
     }
 }
