@@ -61,19 +61,22 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/questionDisplay"
+        android:id="@+id/qstn"
         android:layout_width="269dp"
         android:layout_height="74dp"
         android:layout_above="@+id/answerTxt"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="-177dp"
-        android:drawableBottom="#000000" />
+        android:drawableBottom="#000000"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/timeTxt"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
-        android:layout_alignEnd="@+id/questionDisplay"
+        android:layout_alignEnd="@+id/qstn"
         android:layout_alignParentTop="true"
         android:fontFamily="monospace"
         android:text="Time: "
@@ -89,7 +92,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="193dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="number|numberSigned"
         android:textAlignment="center"
         android:textSize="16pt"
         android:backgroundTint="#195cc6"/>

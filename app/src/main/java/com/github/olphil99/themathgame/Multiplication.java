@@ -4,8 +4,8 @@ public class Multiplication {
     private int multiplicand, multiplier, product;
 
     public Multiplication() {
-        multiplicand = (int) (Math.random() * 100);
-        multiplier = (int) (Math.random() * 100);
+        multiplicand = (int) (Math.random() * 12);
+        multiplier = (int) (Math.random() * 12);
         product = this.getProduct();
     }
 

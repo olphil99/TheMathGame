@@ -17,15 +17,16 @@ import android.widget.TextView;
 
 public class TheGame extends AppCompatActivity {
 
-    TextView timerTxt;
+    TextView timerTxt, question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_the_game);
 
-        // initialize timerTxt
+        // initialize textViews
         timerTxt = (TextView) findViewById(R.id.timerTxt);
+        question = (TextView) findViewById(R.id.qstn);
 
         // Declare score variables
         int incorrect = 0, correct = 0;
@@ -55,5 +56,7 @@ public class TheGame extends AppCompatActivity {
             }
         }.start();
 
+        RandomMathProblem p = new RandomMathProblem();
+        question.setText(p.getProblem());
     }
 }
