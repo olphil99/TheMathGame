@@ -22,6 +22,6 @@ public class Subtraction {
     }
 
     public String toString() {
-        return minuend + " - " + subtrahend + " = ";
+        return minuend + " - " + subtrahend;
     }
 }

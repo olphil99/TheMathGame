@@ -30,6 +30,6 @@ public class Division {
     }
 
     public String toString() {
-        return dividend + " / " + divisor + " = ";
+        return dividend + " / " + divisor;
     }
 }
