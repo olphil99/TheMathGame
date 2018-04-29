@@ -64,12 +64,16 @@ public class TheGame extends AppCompatActivity {
 
         displayQuestion();
 
-        answer.setOnKeyListener(new OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+        answer.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 TextView score = findViewById(R.id.urScoreTxt);
                 EditText display = findViewById(R.id.answerTxt);
 
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE) {
+                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(answer, 0);
+
                     String entry = display.getText().toString();
                     int guess = Integer.valueOf(entry);
                     if(problem.checkAnswer(guess)) {
@@ -86,8 +90,6 @@ public class TheGame extends AppCompatActivity {
                 return false;
             }
         });
-
-
     }
 
     private void displayQuestion() {

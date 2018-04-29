@@ -98,6 +98,7 @@
         android:inputType="number|numberSigned"
         android:textAlignment="center"
         android:textSize="50sp"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:imeOptions="actionDone"/>
 
 </android.widget.RelativeLayout>
