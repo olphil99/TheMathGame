@@ -6,18 +6,26 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.EditText;
+import android.view.View.OnKeyListener;
+import android.view.KeyEvent;
+import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
+import android.view.MotionEvent;
+import android.os.SystemClock;
+
 
 public class TheGame extends AppCompatActivity {
 
     TextView timerTxt, question;
+    EditText answer;
+    RandomMathProblem problem;
+    int incorrect = 0, correct = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +33,9 @@ public class TheGame extends AppCompatActivity {
         setContentView(R.layout.activity_the_game);
 
         // initialize textViews
-        timerTxt = (TextView) findViewById(R.id.timerTxt);
-        question = (TextView) findViewById(R.id.qstn);
-
-        // Declare score variables
-        int incorrect = 0, correct = 0;
+        timerTxt = findViewById(R.id.timerTxt);
+        question = findViewById(R.id.qstn);
+        answer = findViewById(R.id.answerTxt);
 
         // Rectangle boarder around question
         Paint paint = new Paint();
@@ -56,7 +62,37 @@ public class TheGame extends AppCompatActivity {
             }
         }.start();
 
-        RandomMathProblem p = new RandomMathProblem();
-        question.setText(p.getProblem());
+        displayQuestion();
+
+        answer.setOnKeyListener(new OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                TextView score = findViewById(R.id.urScoreTxt);
+                EditText display = findViewById(R.id.answerTxt);
+
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    String entry = display.getText().toString();
+                    int guess = Integer.valueOf(entry);
+                    if(problem.checkAnswer(guess)) {
+                        correct++;
+                    } else {
+                        incorrect++;
+                    }
+
+                    displayQuestion();
+                    display.getText().clear();
+                    score.setText("" + correct);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
     }
+
+    private void displayQuestion() {
+        problem = new RandomMathProblem();
+        question.setText(problem.getProblem());
+    }
+
 }
