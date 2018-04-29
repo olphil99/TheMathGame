@@ -22,6 +22,6 @@ public class Addition {
     }
 
     public String toString() {
-        return augend + " " + addend + " = ";
+        return augend + " + " + addend;
     }
 }
