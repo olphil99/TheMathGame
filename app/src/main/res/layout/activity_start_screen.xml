@@ -18,6 +18,8 @@
         android:onClick="@onCreate"
         android:text="@string/start_game"
         android:textAlignment="center"
+        android:textColor="#545556"
+        android:textSize="24sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
