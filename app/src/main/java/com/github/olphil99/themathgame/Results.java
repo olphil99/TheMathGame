@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 import android.util.Log;
 
@@ -31,7 +33,6 @@ public class Results extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        factSpot = findViewById(R.id.cat);
         requestQueue = Volley.newRequestQueue(this);
         Button restart = findViewById(R.id.restartBtn);
         restart.setOnClickListener(new android.view.View.OnClickListener() {
@@ -41,7 +42,7 @@ public class Results extends AppCompatActivity {
             }
         });
 
-        Button surprise = findViewById(R.id.catBtn);
+        Button surprise = findViewById(R.id.surpriseBtn);
         surprise.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
@@ -123,6 +124,15 @@ public class Results extends AppCompatActivity {
                             @Override
                             public void onResponse(final String response) {
                                 Log.d("RESPONSE", response);
+                                AlertDialog alert = new AlertDialog.Builder(Results.this).create();
+                                alert.setTitle("Fun Fact!");
+                                alert.setMessage(response);
+                                alert.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                                alert.show();
                             }
                         }, new Response.ErrorListener() {
                         @Override
