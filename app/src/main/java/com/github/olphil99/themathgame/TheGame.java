@@ -8,16 +8,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.EditText;
-import android.view.View.OnKeyListener;
 import android.view.KeyEvent;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
-import android.view.MotionEvent;
-import android.os.SystemClock;
+import android.content.Intent;
 
 
 public class TheGame extends AppCompatActivity {
@@ -58,7 +55,10 @@ public class TheGame extends AppCompatActivity {
             @Override
             public void onFinish() {
                 timerTxt.setText("!");
-                // replace with *open score*
+                Intent intent = new Intent(TheGame.this, Results.class);
+                intent.putExtra("correct", correct);
+                intent.putExtra("incorrect", incorrect);
+                startActivity(intent);
             }
         }.start();
 
@@ -69,12 +69,12 @@ public class TheGame extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 TextView score = findViewById(R.id.urScoreTxt);
                 EditText display = findViewById(R.id.answerTxt);
+                String entry = display.getText().toString();
 
-                if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE) {
+                if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE && !entry.equals("")) {
                     InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
                     imm.showSoftInput(answer, 0);
 
-                    String entry = display.getText().toString();
                     int guess = Integer.valueOf(entry);
                     if(problem.checkAnswer(guess)) {
                         correct++;
@@ -87,7 +87,7 @@ public class TheGame extends AppCompatActivity {
                     score.setText("" + correct);
                     return true;
                 }
-                return false;
+                return true;
             }
         });
     }
