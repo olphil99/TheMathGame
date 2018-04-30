@@ -3,8 +3,19 @@ package com.github.olphil99.themathgame;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.ImageView;
 import android.content.Intent;
-import android.widget.Button;
+
+import android.net.Uri;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;import android.widget.Button;
 
 public class Results extends AppCompatActivity {
 
@@ -12,17 +23,28 @@ public class Results extends AppCompatActivity {
     double timePer;
     String letterGrade;
     TextView correctTxt, incorrectTxt, accuracyTxt, timeTxt, gradeTxt;
+    ImageView catSpot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        catSpot = findViewById(R.id.cat);
         Button restart = findViewById(R.id.restartBtn);
         restart.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
                 startActivity(new Intent(Results.this, StartScreen.class));
+            }
+        });
+
+        Button surprise = findViewById(R.id.catBtn);
+        surprise.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(android.view.View v) {
+
+                catSpot.setImageURI(Uri.parse("http://thecatapi.com/api/images/get?format=xml&type=gif&size=small"));
             }
         });
 
@@ -35,6 +57,7 @@ public class Results extends AppCompatActivity {
         accuracyTxt = findViewById(R.id.accuracy);
         timeTxt = findViewById(R.id.timeP);
         gradeTxt = findViewById(R.id.grade);
+
 
         // calculate numbers
         correct = extras.getInt("correct");
@@ -68,4 +91,5 @@ public class Results extends AppCompatActivity {
         gradeTxt.setText(letterGrade);
 
     }
+
 }
