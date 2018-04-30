@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.content.Intent;
 
 import android.net.Uri;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.StringRequest ;
 
 import org.json.JSONObject;import android.widget.Button;
 
@@ -25,12 +27,15 @@ public class Results extends AppCompatActivity {
     TextView correctTxt, incorrectTxt, accuracyTxt, timeTxt, gradeTxt;
     ImageView catSpot;
 
+    private static RequestQueue requestQueue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
         catSpot = findViewById(R.id.cat);
+        requestQueue = Volley.newRequestQueue(this);
         Button restart = findViewById(R.id.restartBtn);
         restart.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
@@ -43,8 +48,7 @@ public class Results extends AppCompatActivity {
         surprise.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-
-                catSpot.setImageURI(Uri.parse("http://thecatapi.com/api/images/get?format=xml&type=gif&size=small"));
+                getCat();
             }
         });
 
@@ -65,7 +69,7 @@ public class Results extends AppCompatActivity {
         numQuestions = correct + incorrect;
 
         if (numQuestions != 0) {
-            accuracy = (int) Math.round(correct * 100 / numQuestions);
+            accuracy = Math.round(correct * 100 / numQuestions);
             timePer = 60 / numQuestions;
             timePer = Math.round(timePer * 100.0) / 100.0;
         }
@@ -90,6 +94,55 @@ public class Results extends AppCompatActivity {
 
         gradeTxt.setText(letterGrade);
 
+    }
+
+    private void getCat() {
+//        try {
+//            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+//                    Request.Method.GET,
+//                    "http://thecatapi.com/api/images/get?format=xml&type=gif&size=small",
+//                    null,
+//                    new Response.Listener<org.json.JSONObject>() {
+//                        @Override
+//                        public void onResponse(final JSONObject response) {
+//                            String gifUrl = response.toString();
+//                            Log.d("URL", gifUrl);
+//                        }
+//                    }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(final VolleyError error) {
+//                    Log.w("ERR", error.toString());
+//                }
+//            });
+//            requestQueue.add(jsonObjectRequest);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+        try {
+            StringRequest request = new StringRequest(
+                    "http://thecatapi.com/api/images/get?format=xml&type=gif&size=small",
+                    new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(final String response) {
+                                Log.d("RESPONSE", response);
+//                                int startInd = response.indexOf("<url>") + 5;
+//                                int endInd = response.indexOf("</url>");
+//                                String catUrl = response.substring(startInd, endInd);
+                                //Log.d("URL", catUrl);
+                                //catSpot.setImageURI(Uri.parse("http://78.media.tumblr.com/tumblr_m036eeYx201r19y18o1_250.jpg"));
+                            }
+                        }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(final VolleyError error) {
+                            Log.d("ERR", error.toString());
+                        }
+                    }
+                    );
+            requestQueue.add(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
