@@ -4,8 +4,8 @@ public class Addition {
     private int augend, addend, sum;
 
     public Addition() {
-        augend = (int) (Math.random() * 12);
-        addend = (int) (Math.random() * 12);
+        augend = (int) (Math.random() * 100);
+        addend = (int) (Math.random() * 100);
         sum = this.getSum();
     }
 

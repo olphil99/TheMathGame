@@ -22,7 +22,7 @@ public class TheGame extends AppCompatActivity {
     TextView timerTxt, question;
     EditText answer;
     RandomMathProblem problem;
-    int incorrect = 0, correct = 0;
+    public int incorrect = 0, correct = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +71,9 @@ public class TheGame extends AppCompatActivity {
                 EditText display = findViewById(R.id.answerTxt);
                 String entry = display.getText().toString();
 
-                if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE && !entry.equals("")) {
-                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
+                if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE && isInvalid(entry)) {
+                    InputMethodManager imm = (InputMethodManager) v.getContext()
+                    .getSystemService(android.content.Context.INPUT_METHOD_SERVICE);
                     imm.showSoftInput(answer, 0);
 
                     int guess = Integer.valueOf(entry);
@@ -95,6 +96,11 @@ public class TheGame extends AppCompatActivity {
     private void displayQuestion() {
         problem = new RandomMathProblem();
         question.setText(problem.getProblem());
+    }
+
+    private static boolean isInvalid(String entry) {
+        return (!entry.equals("") && !entry.equals("+") && !entry.equals("-") &&
+        !entry.contains(",") && !entry.contains("_") && !entry.contains("."));
     }
 
 }

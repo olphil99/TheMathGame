@@ -6,11 +6,156 @@
     android:layout_height="match_parent"
     tools:context=".Results">
 
+    <ImageView
+        android:id="@+id/paper"
+        android:layout_width="323dp"
+        android:layout_height="317dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="114dp"
+        android:rotation="-2.0"
+        app:srcCompat="@drawable/paper" />
+
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="221dp"
+        android:id="@+id/timesUp"
+        android:layout_width="183dp"
         android:layout_height="53dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="89dp"
-        android:text="TextView" /></RelativeLayout>
+        android:layout_marginTop="19dp"
+        android:text="Time's Up!"
+        android:textAlignment="center"
+        android:textColor="#ba0d0d"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/heres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:text="Here's how you did: "
+        android:textColor="#000000"
+        android:textSize="21sp" />
+
+    <TextView
+        android:id="@+id/correctTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/heres"
+        android:layout_marginTop="174dp"
+        android:text="Correct: "
+        android:textColor="#1b9156"
+        android:textSize="10pt"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/correct"
+        android:layout_width="43dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/timeP"
+        android:layout_alignTop="@+id/correctTxt"
+        android:textColor="#000000"
+        android:textSize="10pt"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/incorrectTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/correctTxt"
+        android:layout_below="@+id/correctTxt"
+        android:text="Incorrect: "
+        android:textColor="#ff1616"
+        android:textSize="10pt"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/incorrect"
+        android:layout_width="43dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/correct"
+        android:layout_alignTop="@+id/incorrectTxt"
+        android:layout_marginTop="0dp"
+        android:textColor="#000000"
+        android:textSize="10pt"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/accuracyTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/correctTxt"
+        android:layout_below="@+id/incorrectTxt"
+        android:text="Accuracy: "
+        android:textColor="#8205c6"
+        android:textSize="10pt"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/accuracy"
+        android:layout_width="43dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/correct"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="10pt"
+        android:layout_alignTop="@+id/accuracyTxt" />
+
+    <TextView
+        android:id="@+id/timePerTxt"
+        android:layout_width="96dp"
+        android:layout_height="65dp"
+        android:layout_alignStart="@+id/correctTxt"
+        android:layout_below="@+id/accuracyTxt"
+        android:text="Time Per Question:"
+        android:textColor="#ed8c15"
+        android:textSize="10pt"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/timeP"
+        android:layout_width="43dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/timesUp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="240dp"
+        android:textColor="#000000"
+        android:textSize="10pt"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/gradeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="53dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/correctTxt"
+        android:layout_marginBottom="164dp"
+        android:text="Grade:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="36sp" />
+
+    <TextView
+        android:id="@+id/grade"
+        android:layout_width="60dp"
+        android:layout_height="53dp"
+        android:layout_alignStart="@+id/correct"
+        android:layout_alignTop="@+id/gradeTxt"
+        android:layout_marginStart="-6dp"
+        android:textColor="#ba0d0d"
+        android:textAlignment="center"
+        android:textSize="36sp" />
+
+    <Button
+        android:id="@+id/restartBtn"
+        android:layout_width="124dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:text="Play Again" />
+
+    </RelativeLayout>
