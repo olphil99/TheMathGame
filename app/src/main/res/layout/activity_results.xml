@@ -53,7 +53,7 @@
 
     <TextView
         android:id="@+id/correct"
-        android:layout_width="43dp"
+        android:layout_width="58dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/incorrect"
         android:layout_alignTop="@+id/correctTxt"
@@ -74,10 +74,10 @@
 
     <TextView
         android:id="@+id/incorrect"
-        android:layout_width="43dp"
+        android:layout_width="58dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/correctTxt"
-        android:layout_toEndOf="@+id/catBtn"
+        android:layout_toEndOf="@+id/surpriseBtn"
         android:textColor="#000000"
         android:textSize="10pt"
         android:textStyle="bold" />
@@ -95,11 +95,11 @@
 
     <TextView
         android:id="@+id/accuracy"
-        android:layout_width="55dp"
+        android:layout_width="58dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/incorrect"
         android:layout_below="@+id/incorrectTxt"
-        android:layout_marginStart="-12dp"
+        android:layout_marginStart="-1dp"
         android:textColor="#000000"
         android:textSize="10pt"
         android:textStyle="bold" />
@@ -120,7 +120,7 @@
         android:layout_width="67dp"
         android:layout_height="54dp"
         android:layout_alignBottom="@+id/timePerTxt"
-        android:layout_alignEnd="@+id/timesUp"
+        android:layout_alignEnd="@+id/correct"
         android:gravity="center"
         android:textColor="#000000"
         android:textSize="10pt"
@@ -160,7 +160,7 @@
         android:text="Play Again" />
 
     <Button
-        android:id="@+id/catBtn"
+        android:id="@+id/surpriseBtn"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_alignParentBottom="true"
@@ -168,13 +168,5 @@
         android:layout_marginBottom="11dp"
         android:text="SURPRISE"
         android:textSize="6pt" />
-
-    <ImageView
-        android:id="@+id/cat"
-        android:layout_width="318dp"
-        android:layout_height="246dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        app:srcCompat="@android:color/transparent" />
 
     </RelativeLayout>

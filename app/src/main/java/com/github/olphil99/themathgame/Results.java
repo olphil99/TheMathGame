@@ -5,19 +5,18 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.content.Intent;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
-import android.net.Uri;
 import android.util.Log;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.toolbox.StringRequest ;
 
-import org.json.JSONObject;import android.widget.Button;
+import android.widget.Button;
 
 public class Results extends AppCompatActivity {
 
@@ -25,7 +24,7 @@ public class Results extends AppCompatActivity {
     double timePer;
     String letterGrade;
     TextView correctTxt, incorrectTxt, accuracyTxt, timeTxt, gradeTxt;
-    ImageView catSpot;
+    ImageView factSpot;
 
     private static RequestQueue requestQueue;
 
@@ -34,7 +33,6 @@ public class Results extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        catSpot = findViewById(R.id.cat);
         requestQueue = Volley.newRequestQueue(this);
         Button restart = findViewById(R.id.restartBtn);
         restart.setOnClickListener(new android.view.View.OnClickListener() {
@@ -44,11 +42,11 @@ public class Results extends AppCompatActivity {
             }
         });
 
-        Button surprise = findViewById(R.id.catBtn);
+        Button surprise = findViewById(R.id.surpriseBtn);
         surprise.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                getCat();
+                getFact(correct);
             }
         });
 
@@ -96,7 +94,7 @@ public class Results extends AppCompatActivity {
 
     }
 
-    private void getCat() {
+    private void getFact(final int num) {
 //        try {
 //            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
 //                    Request.Method.GET,
@@ -121,16 +119,20 @@ public class Results extends AppCompatActivity {
 
         try {
             StringRequest request = new StringRequest(
-                    "http://thecatapi.com/api/images/get?format=xml&type=gif&size=small",
+                    "http://numbersapi.com/" + num,
                     new Response.Listener<String>() {
                             @Override
                             public void onResponse(final String response) {
                                 Log.d("RESPONSE", response);
-//                                int startInd = response.indexOf("<url>") + 5;
-//                                int endInd = response.indexOf("</url>");
-//                                String catUrl = response.substring(startInd, endInd);
-                                //Log.d("URL", catUrl);
-                                //catSpot.setImageURI(Uri.parse("http://78.media.tumblr.com/tumblr_m036eeYx201r19y18o1_250.jpg"));
+                                AlertDialog alert = new AlertDialog.Builder(Results.this).create();
+                                alert.setTitle("Fun Fact!");
+                                alert.setMessage(response);
+                                alert.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                                alert.show();
                             }
                         }, new Response.ErrorListener() {
                         @Override
