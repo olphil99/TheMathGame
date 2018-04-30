@@ -10,6 +10,7 @@ public class Results extends AppCompatActivity {
 
     int correct, incorrect, numQuestions, accuracy;
     double timePer;
+    String letterGrade;
     TextView correctTxt, incorrectTxt, accuracyTxt, timeTxt, gradeTxt;
 
     @Override
@@ -38,18 +39,33 @@ public class Results extends AppCompatActivity {
         // calculate numbers
         correct = extras.getInt("correct");
         incorrect = extras.getInt("incorrect");
-        android.util.Log.d("TAG", correct + " " + incorrect);
         numQuestions = correct + incorrect;
-        accuracy = (int) Math.round(correct * 100 / numQuestions);
-        timePer = 60 / numQuestions;
-        timePer = Math.round(timePer * 100.0) / 100.0;
+
+        if (numQuestions != 0) {
+            accuracy = (int) Math.round(correct * 100 / numQuestions);
+            timePer = 60 / numQuestions;
+            timePer = Math.round(timePer * 100.0) / 100.0;
+        }
 
         // display numbers
         correctTxt.setText("" + correct);
         incorrectTxt.setText("" + incorrect);
         accuracyTxt.setText("" + accuracy + "%");
         timeTxt.setText("" + timePer + "s");
-        gradeTxt.setText("" + "B");
+
+        if (accuracy >= 90) {
+            letterGrade = "A";
+        } else if (accuracy >= 80) {
+            letterGrade = "B";
+        } else if (accuracy >= 70) {
+            letterGrade = "C";
+        } else if (accuracy >= 60) {
+            letterGrade = "D";
+        } else {
+            letterGrade = "F";
+        }
+
+        gradeTxt.setText(letterGrade);
 
     }
 }

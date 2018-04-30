@@ -56,7 +56,6 @@ public class TheGame extends AppCompatActivity {
             public void onFinish() {
                 timerTxt.setText("!");
                 Intent intent = new Intent(TheGame.this, Results.class);
-                Log.d("AHH", "" + correct + " " + incorrect + "!!!!!!!!!");
                 intent.putExtra("correct", correct);
                 intent.putExtra("incorrect", incorrect);
                 startActivity(intent);

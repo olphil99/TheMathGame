@@ -36,7 +36,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:text="Here's how you did: "
-        android:textSize="18sp" />
+        android:textColor="#000000"
+        android:textSize="21sp" />
 
     <TextView
         android:id="@+id/correctTxt"
